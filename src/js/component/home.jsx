@@ -8,7 +8,7 @@ function Todo({ todo, index, remove }) {
 		<span>{todo.text}</span> <Button className= "Button" onClick={() => remove(index)}>✕</Button>
 	  </div>
 	);
-  }
+  };
   
   function FormTodo({add}) {
 
@@ -24,7 +24,7 @@ function Todo({ todo, index, remove }) {
 		<Form.Control type="text" className="input" value={value} onChange={e => setValue(e.target.value)} placeholder="What needs to be done?"/>
 	</Form>
 	);
-  }
+  };
   
   function TodoList() {
 
@@ -52,6 +52,6 @@ function Todo({ todo, index, remove }) {
 		</div>
 		</>
 	);
-  }
+  };
 
   export default TodoList;
