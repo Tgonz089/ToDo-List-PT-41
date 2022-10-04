@@ -11,16 +11,16 @@ function Todo({ todo, index, remove }) {
   }
   
   function FormTodo({add}) {
-	
+
 	const [value, setValue] = useState("");
   
-	const handleSubmit = e => { e.preventDefault();
+	const submit = e => { e.preventDefault();
 	  add(value);
 	  setValue("");
 	};
   
 	return (
-	  <Form onSubmit={handleSubmit}> 
+	  <Form onSubmit={submit}> 
 		<Form.Control type="text" className="input" value={value} onChange={e => setValue(e.target.value)} placeholder="What needs to be done?"/>
 	</Form>
 	);
