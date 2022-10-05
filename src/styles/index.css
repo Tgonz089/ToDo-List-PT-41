@@ -11,6 +11,20 @@ div.todo{
     border:1px solid black;
     margin: 10px;
 }
+
+.Button{
+    display:none;
+}
+
+.todo:hover .Button{
+    display: inline;
+    color:black;
+    background: none;
+    outline:none;
+    border: none;
+    
+}
+
 /* 
 
     You can write your own styles here...
