@@ -10,6 +10,7 @@ h1{
 div.todo{
     border:1px solid black;
     margin: 10px;
+    overflow: hidden;
 }
 
 .Button{
@@ -22,6 +23,7 @@ div.todo{
     background: none;
     outline:none;
     border: none;
+    float: right;
     
 }
 
