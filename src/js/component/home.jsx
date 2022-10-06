@@ -48,7 +48,8 @@ function TodoList() {
         .then((response) => response.json())
         .then((data) => setTodos(data))
         .catch((error) => console.log(error)),
-    []);
+    []
+  );
 
   useEffect(() => {
     if (todos != []) {
