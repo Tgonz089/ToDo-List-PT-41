@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 
-function GetList(){
+/*function GetList(){
 	
 	const requestOptions = {
 	method: 'GET',
@@ -37,10 +37,42 @@ function PutList(){
         //error handling
         console.log(error);
     });
-}
+}*/
 
 function TodoList() {
   const [todos, setTodos] = useState([{ text: "No tasks, add a task" }]);
+
+  useEffect(
+    () =>
+      fetch("https://assets.breatheco.de/apis/fake/todos/user/Tristan")
+        .then((response) => response.json())
+        .then((data) => setTodos(data))
+        .catch((error) => console.log(error)),
+    []);
+
+  useEffect(() => {
+    if (todos != []) {
+      fetch("https://assets.breatheco.de/apis/fake/todos/user/Tristan", {
+        method: "PUT",
+        body: JSON.stringify(todos),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((resp) => {
+          console.log(resp.ok);
+          console.log(resp.status);
+          console.log(resp.text());
+          return resp.json();
+        })
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [todos]);
 
   const add = (text) => {
     const newTodos = [...todos, { text }];
