@@ -75,12 +75,12 @@ function TodoList() {
     }
   }, [todos]);
 
-  const add = (text) => {
+  const addTodo = (text) => {
     const newTodos = [...todos, { text }];
     setTodos(newTodos);
   };
 
-  const remove = (index) => {
+  const removeTodo = (index) => {
     const newTodos = [...todos];
     newTodos.splice(index, 1);
     setTodos(newTodos);
@@ -90,10 +90,10 @@ function TodoList() {
     <>
       <h1 className="text-center mb-4">Todos</h1>
       <div className="container">
-        <FormTodo add={add} />
+        <FormTodo add={addTodo} />
         <div>
           {todos.map((todo, index) => (
-            <Todo key={index} index={index} todo={todo} remove={remove} />
+            <Todo key={index} index={index} todo={todo} remove={removeTodo} />
           ))}
         </div>
       </div>
