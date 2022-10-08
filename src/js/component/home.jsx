@@ -3,7 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import FormTodo from "./formTodo.jsx";
 import Todo from "./todo.jsx";
 
-function TodoList() {
+function Home() {
   const [todos, setTodos] = useState([{ text: "No tasks, add a task" }]);
 
   function getToDo() {
@@ -12,9 +12,8 @@ function TodoList() {
       .then((data) => setTodos(data))
       .catch((error) => console.log(error));
   }
-  useEffect(() => getToDo(), []);
 
-  useEffect(() => {
+  function putToDo() {
     if (todos != []) {
       fetch("https://assets.breatheco.de/apis/fake/todos/user/Tristan", {
         method: "PUT",
@@ -33,7 +32,11 @@ function TodoList() {
           console.log(error);
         });
     }
-  }, [todos]);
+  }
+
+  useEffect(() => getToDo(), []);
+
+  useEffect(() => putToDo(), [todos]);
 
   const addTodo = (text) => {
     const newTodos = [...todos, { label: text, done: false }];
@@ -46,6 +49,16 @@ function TodoList() {
     setTodos(newTodos);
   };
 
+  const deleteAllTodos = (todos) => {
+    const newTodos = [...todos];
+    newTodos.splice(0, newTodos.length);
+    const spliceList = [
+      ...newTodos,
+      { label: "No tasks, add a task", done: false },
+    ];
+    setTodos(spliceList);
+  };
+
   return (
     <>
       <h1 className="text-center mb-4">Todos</h1>
@@ -55,6 +68,11 @@ function TodoList() {
           {todos.map((todo, index) => (
             <Todo key={index} index={index} todo={todo} remove={removeTodo} />
           ))}
+          <div>
+            <button className="dltButton" onClick={() => deleteAllTodos(todos)}>
+              Delete All
+            </button>
+          </div>
         </div>
       </div>
     </>
@@ -63,4 +81,4 @@ function TodoList() {
 
 (<FormTodo />), (<Todo />);
 
-export default TodoList;
+export default Home;

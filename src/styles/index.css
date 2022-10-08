@@ -1,6 +1,11 @@
+body{
+    background-color: rgb(211, 209, 209);
+}
+
 .container{
     border:1px solid black;
     padding: 10px;
+    background-color: white;
 }
 
 h1{
@@ -26,6 +31,10 @@ div.todo{
     border: none;
     float: right;
     
+}
+
+.dltButton{
+    margin:10px;
 }
 
 /* 
